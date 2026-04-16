@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: #fff;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .payment-info {
+      background: #f1f5ff;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .payment-info strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .upload-box {
+      border: 2px dashed #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      margin-top: 50px;
+      margin-bottom: 55px;
+      transition: 0.3s;
+    }
+
+    .upload-box:hover {
+      border-color: #4facfe;
+    }
+
+    .upload-box input {
+      display: none;
+    }
+
+    .preview-img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .btn {
+      width: 100%;
+      margin-bottom: 50px;
+      margin-top: 50px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #4facfe;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #3a8de0;
+    }
+
+    .note {
+      font-size: 12px;
+      text-align: center;
+      margin-top: 10px;
+      color: #777;
+    }
+
+    /* 📱 Mobile */
+    @media (max-width: 480px) {
+      .card {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      .card h2 {
+        font-size: 20px;
+      }
+
+      .btn {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Payment</h2>
+
+    <div class="payment-info">
+      <strong>Transfer ke:</strong>
+      Bank BCA<br>
+      No Rek: 1234567890<br>
+      A/N: PT Contoh Sukses<br><br>
+
+      <strong>Total:</strong>
+      Rp 150.000
+    </div>
+
+    <label class="upload-box">
+      📤 Upload Bukti Pembayaran
+      <input type="file" accept="image/*" onchange="previewImage(event)">
+    </label>
+
+    <img id="preview" class="preview-img">
+
+    <button class="btn mt-5" onclick="submitPayment()">Kirim Bukti</button>
+
+    <div class="note">
+      *Tugas Erliza
+    </div>
+  </div>
+
+  <script>
+    function previewImage(event) {
+      const reader = new FileReader();
+      reader.onload = function(){
+        const output = document.getElementById('preview');
+        output.src = reader.result;
+        output.style.display = "block";
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+    function submitPayment() {
+      alert("Bukti pembayaran berhasil dikirim (dummy)");
+    }
+  </script>
+
+</body>
+</html>
